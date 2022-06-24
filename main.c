@@ -29,7 +29,8 @@ float ultrasonic_get_distance_cm (void){
   float distance = pulse_width / 59.0;
   return distance;
 }
-ultrasonic_init(uint8_t trigger, uint8_t echo){
+
+void ultrasonic_init(uint8_t trigger, uint8_t echo){
   gpio_init(trigger);  
     /* Configuro el Trigger como salida */
     gpio_set_dir(trigger, true);
@@ -45,17 +46,17 @@ int main() {
     stdio_init_all();
     sleep_ms(1000);
     printf("Habilitado!!!!!\r\n");
-    /* Habilito el pin de Trigger */
-    gpio_init(TRIGGER);  
-    /* Configuro el Trigger como salida */
-    gpio_set_dir(TRIGGER, true);
-    /* Pongo un 0 en el pin de Trigger */
-    gpio_put(TRIGGER, false);
-    /* Habilito el pin de Echo */
-    gpio_init(ECHO);
-    /* Configuro el Echo como entrada */
-    gpio_set_dir(ECHO, false);
+   
+    ultrasonic_init(TRIGGER, ECHO);
 
+    gpio_init(LEDR);
+    gpio_init(LEDA);
+    gpio_init(LEDV);
+
+    gpio_set_dir(28, true);
+    gpio_set_dir(21, true);
+    gpio_set_dir(17, true);
+    
     while (true) {
       float ultrasonic = ultrasonic_get_distance_cm();
 
