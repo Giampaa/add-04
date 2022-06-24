@@ -1,6 +1,6 @@
 add-04
 
-Nombre: Leandro ´´puto´´ Giampaolo
+Nombre: Leandro Giampaolo
 
 Materia: Adquisición de Datos
 
